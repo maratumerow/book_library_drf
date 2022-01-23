@@ -26,6 +26,9 @@ class BookCreateViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.BookCreateSerializer
     permission_classes = (permissions.IsAuthenticated,)
 
+    def perform_create(self, serializer):
+        serializer.save(creator=self.request.user)
+
 
 class AuthorViewSet(viewsets.ModelViewSet):
     """Вывод авторов и автора"""

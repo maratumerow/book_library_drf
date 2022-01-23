@@ -45,4 +45,4 @@ class BookCreateSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Book
-        exclude = ("draft",)
+        exclude = ("draft", "creator")

@@ -12,9 +12,9 @@ urlpatterns = format_suffix_patterns(
     [
         path("create/", views.BookCreateViewSet.as_view({"post": "create"})),
         path("book/", views.BookViewSet.as_view({"get": "list"})),
-        path(
-            "book/<int:pk>/",
-            views.BookViewSet.as_view({"get": "retrieve", "delete": "destroy"}),
+        path("book/<int:pk>/", views.BookViewSet.as_view(
+                {"get": "retrieve", "delete": "destroy", "put": "update"}
+            ),
         ),
     ]
 )

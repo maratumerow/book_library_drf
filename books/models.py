@@ -21,7 +21,8 @@ class Genre(models.Model):
 class Author(models.Model):
     """Автор"""
 
-    first_name = models.CharField("Имя", max_length=128, help_text="Имя автора")
+    first_name = models.CharField(
+        "Имя", max_length=128, help_text="Имя автора")
     last_name = models.CharField(
         "Фамилия", max_length=128, help_text="Фамилия автора"
     )
@@ -40,7 +41,11 @@ class Author(models.Model):
 class Book(models.Model):
     """Книга"""
 
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    creator = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name="Владелец книги"
+    )
     author_by = models.ForeignKey(
         Author,
         on_delete=models.SET_NULL,
@@ -61,7 +66,8 @@ class Book(models.Model):
         ],
     )
     year = models.PositiveIntegerField("Год", help_text="Год издания")
-    title = models.CharField("Название", max_length=256, help_text="Название книги")
+    title = models.CharField("Название", max_length=256,
+                             help_text="Название книги")
     description = models.TextField(
         "Описание", max_length=1024, blank=True, help_text="Описание книги"
     )
